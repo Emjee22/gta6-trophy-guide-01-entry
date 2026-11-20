@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leonida Trophy Guide — GTA VI · all 55 PS5 trophies, cited steps</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <h1>Leonida Trophy Guide</h1>
+    <p class="sub">GTA VI · PlayStation 5 · 55 trophies · every guide in numbered steps, every step cited</p>
+  </div>
+  <div class="progress" id="progressBox">
+    <strong id="progressText">0 / 55 earned</strong>
+    <div class="bar"><span id="progressFill"></span></div>
+  </div>
+  <div class="controls">
+    <button id="exportBtn" type="button">Export</button>
+    <label class="importBtn">Import <input id="importFile" type="file" accept="application/json"></label>
+    <span class="saved">Saved in this browser</span>
+    <label class="spoiler"><input id="spoilerToggle" type="checkbox"> Hide story spoilers until earned</label>
+  </div>
+</header>
+<div class="audit" id="auditStrip">Loading the guide…</div>
+<div class="filterrow">
+<nav class="pills" id="filterPills" aria-label="Filters"></nav>
+<div class="searchrow">
+  <input id="searchBox" type="search" placeholder="Search trophies…" aria-label="Search trophies">
+</div>
+</div>
+<nav class="tabs" aria-label="Views">
+  <button type="button" data-tab="checklist" class="active">Checklist</button>
+  <button type="button" data-tab="roadmap">Roadmap</button>
+  <button type="button" data-tab="missable">Missables</button>
+  <button type="button" data-tab="sources">Sources</button>
+</nav>
+<main id="view">
+  <section id="tab-checklist" class="tabpane active">
+    <div class="layout">
+      <aside class="listcol">
+        <h2>Trophies <span id="listCount" class="count"></span></h2>
+        <ul id="trophyList" class="trophylist"></ul>
+      </aside>
+      <section class="detailcol" id="detail" aria-live="polite"></section>
+      <aside class="srccol">
+        <h2>Sources <span class="readdate">read 20 Nov 2026</span></h2>
+        <ol id="sourceCol" class="srclist"></ol>
+        <p class="srcnote">Every step cites its source by number. The official list [5] gives each trophy its name, description and grade.</p>
+      </aside>
+    </div>
+  </section>
+  <section id="tab-roadmap" class="tabpane">
+    <h2>Roadmap to the platinum — Vice Got a Price!</h2>
+    <p class="lede">About 200 hours, difficulty 4/10, one playthrough, no online trophies, no mission replay. Keep a manual save at the start of each chapter.</p>
+    <div id="roadmapStages" class="stages"></div>
+    <h3>The 100% checklist (A Long Road)</h3>
+    <p class="lede">The checklist opens after the story, under Progress &gt; Stats &gt; 100% Completion. It is closer to 60% true completion: most lines ask for a share, not everything.</p>
+    <div id="checklistTable"></div>
+  </section>
+  <section id="tab-missable" class="tabpane">
+    <h2>Missables, watch list, unconfirmed &amp; disagreements</h2>
+    <p class="lede">One trophy can be missed. Everything else on this page is a warning that turned out not to matter, a guide that has not pinned a method down yet, or a place where two sources disagree.</p>
+    <div id="missableView"></div>
+  </section>
+  <section id="tab-sources" class="tabpane">
+    <h2>Source matrix</h2>
+    <p class="lede">Seven sources, read 20 Nov 2026. Coverage is counted from the guides themselves: how many of the 55 guides cite each source.</p>
+    <div id="sourceMatrix"></div>
+    <h3>How this guide is built</h3>
+    <p class="lede">Every guide is written in our own words from the launch-day guides listed above, in numbered steps, each step citing its source. Where two sources disagree on a number or a condition, both versions are shown and neither is picked. Where no source gives a method, the trophy is marked unconfirmed instead of guessed. Official trophy names and descriptions are shown as PlayStation publishes them.</p>
+    <p class="lede">Platinum time ~200 h [1][2][3]. No Rockstar artwork is used; the look is our own.</p>
+  </section>
+</main>
+<footer class="about">
+  <p><strong>Leonida Trophy Guide.</strong> An offline guide and tracker for the 55 PlayStation 5 trophies of Grand Theft Auto VI. Progress is saved in your browser; export it to a file and import it back. No online trophies, no account, no network: the app runs entirely from its own files.</p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
