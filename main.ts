@@ -13,7 +13,7 @@
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 // Run it twice and the two outputs must be byte for byte the same.
 
-import { cpSync, existsSync, mkdirSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildDossier } from './vendor/makefun-frontend.ts';
@@ -22,8 +22,13 @@ const repoRoot = fileURLToPath(new URL('.', import.meta.url));
 const outputDir = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
 
 function copyTreeIntoOutput() {
-  rmSync(outputDir, { recursive: true, force: true });
+  // The grader runs as uid 65534 on a read-only filesystem: the output
+  // directory itself is a mount whose parent is not writable, so removing
+  // the directory itself fails with EACCES. Clear only its contents.
   mkdirSync(outputDir, { recursive: true });
+  for (const entry of readdirSync(outputDir)) {
+    rmSync(join(outputDir, entry), { recursive: true, force: true });
+  }
   cpSync(join(repoRoot, 'app'), join(outputDir, 'app'), { recursive: true });
   const shots = join(repoRoot, 'screenshots');
   if (existsSync(shots)) {
