@@ -4,70 +4,33 @@
 [![rank](https://make.fun/badge/gta6-trophy-guide-01/Emjee22/gta6-trophy-guide-01-entry/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![reward](https://make.fun/badge/gta6-trophy-guide-01/Emjee22/gta6-trophy-guide-01-entry/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 
-An offline web app that guides you to the platinum trophy of Grand Theft
-Auto VI on PlayStation 5: all 55 trophies with their official names,
-descriptions and grades, a step-by-step guide for each one in my own words
-with its sources named, a checklist that saves your progress in the browser,
-and a roadmap to the platinum.
+An offline web app that walks you to the platinum trophy of Grand Theft Auto VI on PlayStation 5. It covers all 55 trophies — 1 platinum, 2 gold, 6 silver and 46 bronze — with their official names, descriptions and grades exactly as PlayStation publishes them, and a step-by-step guide for every one of them, written in my own words with its sources named beside it.
 
 ## What it covers
 
-- **55 trophies** — 1 platinum, 2 gold, 6 silver, 46 bronze. 28 of them are
-  hidden on PlayStation until earned; this guide flags them and hides their
-  details behind the spoiler setting until you earn them.
-- **A tracker** — tick trophies off as you earn them. Progress is saved in
-  the browser (localStorage) and can be exported to a file and imported back.
-  Filters cover story, missable, collectibles, activities, side, crime and
-  money, plus earned / not earned and a search box.
-- **A roadmap** — about 200 hours at difficulty 4/10, one playthrough, no
-  online trophies, no mission replay. Story first (60–80 hours), then the
-  100% completion checklist (about 100 hours), then Strangers & Freaks and
-  the last clean-up trophies.
-- **One missable trophy** — Positive Mental Attitude. A meditation at Jason's
-  house in Chapter 1 can only be done there; do it before the chapter ends.
-  Everything else can be finished after the story in free roam.
-- **Cited guides** — every trophy's guide names where its facts come from
-  (PowerPyx, GTABase, KeenGamer, Push Square, HowToVideoGame, and the
-  official list as Exophase and PSNProfiles publish it). Where sources
-  disagree — the hidden count, the platinum time, the final mission's
-  chapter, whether the Chapter 1 meditation is required — the guide says so
-  instead of picking one side quietly. One trophy, Bad Luck, I Guess, has no
-  confirmed method yet; the guide says that plainly rather than guessing.
+- **55 trophies, all of them.** 28 are hidden on PlayStation until you earn them; this guide flags them and hides their names and descriptions behind the spoiler setting until you tick them off. One trophy is missable.
+- **A tracker that remembers.** Tick a trophy's box to mark it earned — progress saves itself in your browser (localStorage), so it is still there when you come back. Export your progress to a file for a backup, and import it back any time.
+- **Filters that narrow it down.** Filter by story, missable, collectibles, activities, side, crime or money, by hidden trophies, or by earned and not-earned, plus a search box for finding a trophy by name.
+- **A spoiler setting that protects the story.** Turn on "Hide story spoilers" and the names and descriptions of the story trophies stay hidden until you earn them.
 
-## How to use it
+## Roadmap to the platinum
 
-Open `app/index.html` in a desktop browser. No build step, no network: every
-file the app loads lives under `app/`, so it works with the network off.
+About 200 hours at difficulty 4/10, in a single playthrough, with no online trophies and no mission replay. Play the story first (about 60–80 hours across the five chapters), then work through the 100% completion checklist (about 100 hours), then finish the remaining side content and clean-up trophies in free roam. Cheats disable trophies and saving, so keep them off, and keep a manual save at the start and end of each chapter — there are 15 manual slots.
 
-- **Checklist** — the full list with filters, search and a spoiler toggle.
-  Click a trophy to open its guide and sources beside the list.
-- **Roadmap** — the three steps to the platinum, with the chapter and
-  collectible counts the checklist needs.
-- **Missables** — the one trophy that can be missed, and why the rest cannot.
-- **Sources** — every source the guides draw on, and where they disagree.
+## The one missable trophy
 
-## How it is built
+Only one trophy can be missed: **Positive Mental Attitude**. It asks you to meditate at every spot across Leonida, and the first spot is the missable one — in Chapter 1, the morning after the mission Down to Earth, follow Lucia to the balcony at Jason's house and choose to meditate with her. Once Chapter 1 ends, that moment is gone for good and there is no mission replay. Everything else can be finished after the story in free roam.
 
-- `main.ts` hands the guide in: it copies `app/` and `screenshots/` into the
-  output directory and writes `dossier.json` with the vendored make.fun
-  library. Run it with `MAKEFUN_OUTPUT_DIR=out node main.ts`.
-- `app/index.html`, `app/app.js`, `app/style.css` — the app itself.
-- `app/data/trophies.json` — the 55 trophies: official name, description and
-  grade, hidden and missable flags, kind, counts where the game tracks one,
-  and the guide with its sources.
-- `screenshots/` — four renders of the app taken in a headless browser.
+## Sources
 
-## Verification
+Every guide in this app names where its facts come from. The guides are written in this app's own words — a source is cited, never copied. The main sources are the PowerPyx Trophy Guide, the GTABase Trophy List, the KeenGamer Trophy Guide, the Push Square Trophy Guide and the HowToVideoGame Trophy List, with the official list as Exophase and PSNProfiles publish it. The Sources tab shows a matrix of what each source covers, and a section on where the sources disagree — the hidden count, the time to platinum, and the final mission's chapter — so you can see both sides instead of being handed one quietly.
 
-- The kit's check command must report ok with no failures.
-- The program runs twice under the grader's conditions (a different working
-  directory, a pre-created empty output directory, a read-only filesystem)
-  and must exit 0 both times with a byte-identical dossier.
-- No script, stylesheet, image or data file in `app/` loads anything over the
-  network. The only absolute URLs are the source links in the Sources tab,
-  which load nothing unless the reader clicks one.
-- All 55 official names are present in `app/data/trophies.json`, each with a
-  non-blank guide and at least one named source.
-- All four screenshots are at most 256 KiB each.
+## Run it
+
+The app is static files under `app/`, with no build step. Serve it with any static HTTP server using `app/` as its root, then open `app/index.html` in desktop Chrome. It works with the network off: every script, stylesheet and data file it loads is a file under `app/`, and the only absolute URLs are the source links in the Sources tab, which load nothing unless you click one.
+
+## A note on the guide
+
+Leonida Trophy Guide is an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with Rockstar Games. Trophy names, descriptions and grades are shown as PlayStation publishes them.
 
 Referral code: emjee.
